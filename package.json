@@ -1,6 +1,6 @@
 {
   "name": "lint-readme-code",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "lint code in your readme.md",
   "license": "MIT",
   "repository": "hemanth/lint-readme-code",
@@ -9,8 +9,8 @@
     "email": "hemanth.hm@gmail.com",
     "url": "h3manth.com"
   },
-  "bin" : {
-    "lrc" : "./cli.js"
+  "bin": {
+    "lrc": "./cli.js"
   },
   "engines": {
     "node": ">=0.10.0"
