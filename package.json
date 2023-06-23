@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "gfm-code-blocks": "^0.3.0",
-    "meow": "^3.6.0"
+    "meow": "^10.0.0"
   },
   "devDependencies": {
     "ava": "^0.5.0",
