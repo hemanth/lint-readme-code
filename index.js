@@ -1,20 +1,18 @@
-'use strict';
-var readFile = require('fs').readFile;
-var codeBlocks = require('gfm-code-blocks');
+"use strict";
+var readFile = require("fs").readFile;
+var codeBlocks = ((m) => (m && m.default) ? m.default : m)(require("gfm-code-blocks"));
+var xo = require("xo");
 var linters = {
-	js: require('xo').lintText
+  js: (code) => xo.lintText(code, { filename: "readme.js" })
 };
-
-module.exports = function (path) {
-	var promise = new Promise((resolve, reject) => {
-		readFile(path, {encoding: 'utf8'}, (err, data) => {
-			if (err) {
-				reject(err);
-			} else {
-				codeBlocks(data).filter(v => typeof v.lang !== 'undefined')
-				.map(v => resolve(linters[v.lang](v.code)));
-			}
-		});
-	});
-	return promise;
+module.exports = function (filePath) {
+  return new Promise((resolve, reject) => {
+    readFile(filePath, {encoding: "utf8"}, (err, data) => {
+      if (err) return reject(err);
+      var blocks = codeBlocks(data).filter(v => (v.lang || v.type) && linters[v.lang || v.type]);
+      if (!blocks.length) return resolve({ errorCount: 0, results: [{ errorCount: 0 }] });
+      var b = blocks[0];
+      Promise.resolve(linters[b.lang || b.type](b.code)).then(resolve, reject);
+    });
+  });
 };

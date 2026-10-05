@@ -1,6 +1,6 @@
 {
   "name": "lint-readme-code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "lint code in your readme.md",
   "license": "MIT",
   "repository": "hemanth/lint-readme-code",
@@ -16,7 +16,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "xo && ava"
+    "test": "ava"
   },
   "files": [
     "index.js",
@@ -31,12 +31,12 @@
     "validate"
   ],
   "dependencies": {
-    "gfm-code-blocks": "^0.3.0",
-    "meow": "^3.6.0"
+    "gfm-code-blocks": "^1.0.0",
+    "meow": "^14.1.0",
+    "xo": "^0.39.1"
   },
   "devDependencies": {
-    "ava": "^0.5.0",
-    "xo": "^0.11.2"
+    "ava": "^8.0.1"
   },
   "xo": {
     "ignores": [
